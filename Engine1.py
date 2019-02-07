@@ -6,7 +6,7 @@ from pprint import pprint
 import cloudmersive_ocr_api_client
 
 api_instance = cloudmersive_ocr_api_client.ImageOcrApi()
-image_file = 'img/export/Final.jpg' # file | Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
+image_file = 'G:\\Something Like Program\\Projects Sem 6\\Camcode\\export2.jpg' # file | Image file to perform OCR on.  Common file formats such as PNG, JPEG are supported.
 
 print('Enter Cloudmersive Key : ')
 key = input()
