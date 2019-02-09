@@ -55,7 +55,7 @@
               <button class="nav-link" style="background-color: Transparent;    background-repeat:no-repeat;    border: none;    cursor:pointer;    overflow: hidden;  " onclick="Home()">Home <span class="sr-only">(current)</span></button>
             </li>
             <li class="nav-item">
-              <button class="nav-link" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden;" background-color="Transparent" onclick="#">IDE</button>
+              <button class="nav-link" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden;" background-color="Transparent" onclick="IDE()">IDE</button>
             </li>
             <li class="nav-item">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,7 +63,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="https://cloudmersive.com/">Home</a>
-                <a class="dropdown-item" href="https://account.cloudmersive.com/default">Profile</a>
+                <button class="dropdown-item" onclick="CloudmersiveDashboard()">Profile</button>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="https://api.cloudmersive.com/docs/image.asp">Documentation</a>
                 <div class="dropdown-divider"></div>
@@ -92,6 +92,18 @@
 
   <!-- Body Change Script -->
   <script>
+  		function CloudmersiveDashboard(){
+  			var attr = document.createAttribute("w3-include-html");
+			var body = document.getElementById("MainBody");
+			body.setAttribute("w3-include-html","CloudmersiveDashboard.html");
+			includeHTML();
+  		}
+  		function IDE(){
+  			var attr = document.createAttribute("w3-include-html");
+			var body = document.getElementById("MainBody");
+			body.setAttribute("w3-include-html","IDE.html");
+			includeHTML();
+  		}
 	  function includeHTML() {
 		var z, i, elmnt, file, xhttp;
 		/* Loop through a collection of all HTML elements: */
