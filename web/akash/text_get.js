@@ -1,37 +1,19 @@
-// function add_face(){
-//   var python = require("python-shell")
-//   var path = require("path")
-//   var name = document.getElementById("person").value
-//
-//     var options = {
-//     scriptPath : path.join(__dirname, '/../engine/'),
-//     pythonPath : '/usr/local/bin/python3',
-//     args : ["cam", name]
-//   }
-//
-//   var face = new python("add_face.py", options);
-//
-//   face.end(function(err, code, message) {
-//     swal("Face added!", "We can now recognize your face", "success")
-//     document.getElementsById("add").innerHTML = "message";
-//   })
-// }
+var myPythonScriptPath = 'hello.py';
 
+// Use python shell
+var {PythonShell} = require('python-shell');
+var pyshell = new PythonShell(myPythonScriptPath);
 
-// function getText(){
-//   var python = require('python-shell')
-//   let pyshell = new PythonShell('hello.py')
-//   pyshell.end(function(err,code,signal){
-//
-//   })
-// }
+pyshell.on('message', function (message) {
+    // received a message sent from the Python script (a simple "print" statement)
+    console.log(message);
+});
 
-let {PythonShell} = require('python-shell')
+// end the input stream and allow the process to exit
+pyshell.end(function (err) {
+    if (err){
+      throw err;
+};
 
-PythonShell.run('Engine.py', null, function (err, results) {
-  if(err)
-  throw err
-  console.log(results)
-
-  // script finished
+console.log('finished');
 });
