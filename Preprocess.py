@@ -2,7 +2,7 @@ import cv2
 import numpy as np
     # Convert to gray
 def Preprocess(img):
-    #img = cv2.imread('G:\\Something Like Program\\Projects Sem 6\\Camcode\\img\\Knapsack01.jpg', cv2.IMREAD_COLOR)
+    #img = cv2.imread('img\\K01.jpg', cv2.IMREAD_COLOR)
     #img = cv2.resize(img,(1300,900))
     #cv2.imshow('Original',img)
         # Applying Grayscale

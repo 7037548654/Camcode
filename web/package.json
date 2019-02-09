@@ -1,8 +1,8 @@
 {
-    "title": "Simple Sidebar",
-    "name": "startbootstrap-simple-sidebar",
-    "version": "5.0.0",
-    "description": "A simple sidbar navigation HTMl template built with Bootstrap",
+    "title": "Camcode",
+    "name": "Camcode",
+    "version": "1.0.0",
+    "description": "A project to Ease the way to code...",
     "keywords": [
         "css",
         "sass",
@@ -15,19 +15,14 @@
     "scripts": {
         "start": "electron ."
     },
-    "homepage": "https://startbootstrap.com/template-overviews/simple-sidebar",
+    "homepage": "https://github.com/7037548654/Camcode",
     "bugs": {
-        "url": "https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/issues",
-        "email": "feedback@startbootstrap.com"
+        "url": "https://github.com/7037548654/Camcode"
     },
-    "license": "MIT",
-    "author": "Start Bootstrap",
-    "contributors": [
-        "David Miller (http://davidmiller.io/)"
-    ],
+    "author": "Rajat Dangwal, Akash Chhetri and Arvind Singh Rawat",
     "repository": {
         "type": "git",
-        "url": "https://github.com/BlackrockDigital/startbootstrap-simple-sidebar.git"
+        "url": "https://github.com/7037548654/Camcode"
     },
     "dependencies": {
         "bootstrap": "^4.2.1",
