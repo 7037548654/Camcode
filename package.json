@@ -1,0 +1,27 @@
+{
+  "name": "camcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7037548654/Camcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/7037548654/Camcode/issues"
+  },
+  "homepage": "https://github.com/7037548654/Camcode#readme",
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "css": "^2.2.4",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "serve-static": "^1.13.2"
+  }
+}
