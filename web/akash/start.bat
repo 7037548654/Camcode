@@ -1,1 +1,0 @@
-node text_get.js
