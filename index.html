@@ -30,7 +30,7 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Sidebar</div>
       <div class="list-group list-group-flush" float="right">
-        <button class="list-group-item list-group-item-action bg-light" onclick = "Home()">Home</button>
+        <button class="list-group-item list-group-item-action bg-light"  onclick = "Home()">Home</button>
         <button class="list-group-item list-group-item-action bg-light" onclick = "UploadPhoto()">Upload Photo</button>
         <button class="list-group-item list-group-item-action bg-light" onclick = "Camera()">Camera</button>
         <a href="https://account.cloudmersive.com/default" class="list-group-item list-group-item-action bg-light">Dashboard</a>
@@ -49,10 +49,10 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
-              <button class="nav-link" style="background-color: Transparent;    background-repeat:no-repeat;    border: none;    cursor:pointer;    overflow: hidden;  " onclick="Home()">Home <span class="sr-only">(current)</span></button>
+              <button class="nav-link" style="background-color: Transparent; background-repeat:no-repeat;border: none; cursor:pointer;   overflow: hidden;" onclick="Home()">Home <span class="sr-only">(current)</span></button>
             </li>
             <li class="nav-item">
               <button class="nav-link" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden;" background-color="Transparent" onclick="IDE()">IDE</button>
@@ -71,14 +71,14 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> -->
       </nav>
 
       <!--<div class="container-fluid">
         <h1 class="mt-4">Simple Sidebar</h1>-->
         <!-- -------------------------------------------------------------------------------------------------------------------------------- -->
 
-        <div>
+        <div id="MainBody">
         <iframe src="Home.html" height="400" width="100%"></iframe>
         </div>
 
@@ -135,16 +135,16 @@
 		  }
 		}
 	  }
-	  includeHTML();
   </script>
   <script>
   		function UploadPhoto()
   		{
-			var attr = document.createAttribute("w3-include-html");
-			var body = document.getElementById("MainBody");
-			body.setAttribute("w3-include-html","uploadfile.html");
-			includeHTML();
+			// var attr = document.createAttribute("w3-include-html");
+			// var body = document.getElementById("MainBody");
+			// body.setAttribute("w3-include-html","uploadfile.html");
+			// includeHTML();
   		}
+
   		function Home()
   		{
 			var attr = document.createAttribute("w3-include-html");
@@ -152,6 +152,7 @@
 			body.setAttribute("w3-include-html","Home.html");
 			includeHTML();
   		}
+
   		function ChangeKey()
   		{
 			var attr = document.createAttribute("w3-include-html");
