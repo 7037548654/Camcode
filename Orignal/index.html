@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Simple Sidebar - Start Bootstrap Template</title>
+  <title>Camcode</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,11 +20,11 @@
 
 <body>
 
-  <div class="d-flex" id="wrapper">
+  <div class="d-flex toggled" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Start Bootstrap </div>
+      <div class="sidebar-heading">Welcome to Camcode</div>
       <div class="list-group list-group-flush">
         <a href="Home.html" class="list-group-item list-group-item-action bg-light" target="MainBody">Home</a>
         <a href="uploadfile.html" class="list-group-item list-group-item-action bg-light" target="MainBody">Upload Photo</a>
@@ -68,12 +68,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="Home.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="https://account.cloudmersive.com/default">Cloudmersive</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item">
+              <a class="nav-link" href="https://account.cloudmersive.com//keys">Get Your Key</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://ideone.com/">IDE</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Dropdown
               </a>
@@ -83,27 +89,26 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
-            </li>
+            </li> -->
           </ul>
         </div>
       </nav>
 
-      <!-- <div class="container-fluid">
-        <h1 class="mt-4">Simple Sidebar</h1>
-        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-      </div>
-    </div> -->
 
     <!-- main body -->
 
     <div id="container">
-          <iframe id="MainBody" src="Home.html" height="400" width="100%"></iframe>
+          <iframe id="MainBody" src="Home.html" width="100%"></iframe>
     </div>
 
     <!-- main body end -->
 
+    <!-- iframe <script> -->
+    <script>
+    $('iframe').load(function(){$(this).height($(this).contents().outerHeight());});
+</script>
 
+    <!-- </script> -->
 
     <!-- /#page-content-wrapper -->
 

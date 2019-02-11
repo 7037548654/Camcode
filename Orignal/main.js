@@ -7,6 +7,10 @@ const path = require('path')
 const router = express.Router()
 var serveStatic = require('serve-static')
 
+
+
+
+
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.static(path.join(__dirname,"/node_modules")));
 
@@ -53,13 +57,13 @@ function ocr_detect(){
   api.imageOcrPost(imageFile, opts, callback);
 };
 
-app.post('/submitfile', function(req, res) {
-  console.log(req.body.file6);
-  res.send(200);
-
-  // sending a response does not pause the function
-  // ocr_detect();
-});
+// app.post('/submitfile', function(req, res) {
+//   console.log(req.body.file6);
+//   res.send(200);
+//
+//   // sending a response does not pause the function
+//   // ocr_detect();
+// });
 // router.get('/sitemap',function(req,res){
 //   res.sendFile(path.join(__dirname+'/sitemap.html'));
 // })
@@ -70,6 +74,8 @@ app.post('/submitfile', function(req, res) {
 // body.setAttribute("w3-include-html","uploadfile.html");
 // includeHTML();
 // }
+
+
 
 //add the router
 app.use('/', router);
