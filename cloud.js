@@ -21,7 +21,7 @@ function ocr_detect(){
       console.error(error);
     } else {
       let d =JSON.stringify(data['TextResult'])
-      fs.writeFile('paths.txt', d, (err) => {
+      fs.writeFile('ocr.txt', d, (err) => {
       // In case of a error throw err.
       if (err) throw err;
       })

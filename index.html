@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="Camcode" content="true">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Rajat Dangwal, Akash Chhetri, Arvind Singh Rawat">
+
+  <title>Camcode</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <script>if(typeof module == 'object') { window.module = module; module = undefined;}</script>
+  <script>if (window.module) module = window.module;</script> -->
+
+  <!-- Styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Sidebar</div>
+      <div class="list-group list-group-flush" float="right">
+        <button class="list-group-item list-group-item-action bg-light" onclick = "Home()">Home</button>
+        <button class="list-group-item list-group-item-action bg-light" onclick = "UploadPhoto()">Upload Photo</button>
+        <button class="list-group-item list-group-item-action bg-light" onclick = "Camera()">Camera</button>
+        <a href="https://account.cloudmersive.com/default" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <button href="https://account.cloudmersive.com/keys" class="list-group-item list-group-item-action bg-light" onclick = "ChangeKey()">Change Key</button>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <button class="nav-link" style="background-color: Transparent;    background-repeat:no-repeat;    border: none;    cursor:pointer;    overflow: hidden;  " onclick="Home()">Home <span class="sr-only">(current)</span></button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden;" background-color="Transparent" onclick="IDE()">IDE</button>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Cloudmersive
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="https://cloudmersive.com/">Home</a>
+                <button class="dropdown-item" onclick="CloudmersiveDashboard()">Profile</button>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://api.cloudmersive.com/docs/image.asp">Documentation</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://account.cloudmersive.com/logout">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!--<div class="container-fluid">
+        <h1 class="mt-4">Simple Sidebar</h1>-->
+        <!-- -------------------------------------------------------------------------------------------------------------------------------- -->
+
+        <div>
+        <iframe src="Home.html" height="400" width="100%"></iframe>
+        </div>
+
+        <!-- -------------------------------------------------------------------------------------------------------------------------------- -->
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="/jquery/dist/jquery.min.js"></script>
+  <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Body Change Script -->
+  <script>
+  		function CloudmersiveDashboard(){
+  			var attr = document.createAttribute("w3-include-html");
+			var body = document.getElementById("MainBody");
+			body.setAttribute("w3-include-html","CloudmersiveDashboard.html");
+			includeHTML();
+  		}
+  		function IDE(){
+  			var attr = document.createAttribute("w3-include-html");
+			var body = document.getElementById("MainBody");
+			body.setAttribute("w3-include-html","IDE.html");
+			includeHTML();
+  		}
+	  function includeHTML() {
+		var z, i, elmnt, file, xhttp;
+		/* Loop through a collection of all HTML elements: */
+		z = document.getElementsByTagName("*");
+		for (i = 0; i < z.length; i++) {
+		  elmnt = z[i];
+		  /*search for elements with a certain atrribute:*/
+		  file = elmnt.getAttribute("w3-include-html");
+		  if (file) {
+			/* Make an HTTP request using the attribute value as the file name: */
+			xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			  if (this.readyState == 4) {
+				if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+				if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+				/* Remove the attribute, and call this function once more: */
+				//elmnt.removeAttribute("w3-include-html");
+				//includeHTML();
+			  }
+			}
+			xhttp.open("GET", file, true);
+			xhttp.send();
+			/* Exit the function: */
+			return;
+		  }
+		}
+	  }
+	  includeHTML();
+  </script>
+  <script>
+  		function UploadPhoto()
+  		{
+			var attr = document.createAttribute("w3-include-html");
+			var body = document.getElementById("MainBody");
+			body.setAttribute("w3-include-html","uploadfile.html");
+			includeHTML();
+  		}
+  		function Home()
+  		{
+			var attr = document.createAttribute("w3-include-html");
+			var body = document.getElementById("MainBody");
+			body.setAttribute("w3-include-html","Home.html");
+			includeHTML();
+  		}
+  		function ChangeKey()
+  		{
+			var attr = document.createAttribute("w3-include-html");
+			var body = document.getElementById("MainBody");
+			body.setAttribute("w3-include-html","ChangeKey.html");
+			includeHTML();
+  		}
+  </script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+</body>
+</html>
