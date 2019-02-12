@@ -10,7 +10,7 @@ var formidable = require('formidable')
 const multer = require('multer');
 const ejs = require('ejs');
 
-
+let filepath = ''
 
 
 
@@ -22,14 +22,6 @@ router.get('/',function(req,res){
 });
 router.get('/Home.html',function(req,res){
   res.sendFile(path.join(__dirname+'/Home.html'));
-});
-
-router.get('/uploadfile.html',function(req,res){
-  res.sendFile(path.join(__dirname+"/uploadfile.html"))
-});
-
-router.get('/uploaddemo.html',function(req,res){
-  res.sendFile(path.join(__dirname+"/uploaddemo.html"))
 });
 
 function ocr_detect(){
@@ -74,13 +66,6 @@ function ocr_detect(){
 // router.get('/sitemap',function(req,res){
 //   res.sendFile(path.join(__dirname+'/sitemap.html'));
 // })
-// function UploadPhoto()
-// {
-// var attr = document.createAttribute("w3-include-html");
-// var body = document.getElementById("MainBody");
-// body.setAttribute("w3-include-html","uploadfile.html");
-// includeHTML();
-// }
 
 // getting imageFile
 
@@ -90,6 +75,8 @@ const storage = multer.diskStorage({
   destination: './public/uploads/',
   filename: function(req, file, cb){
     cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+    global.filepath = './public/uploads/'+file.fieldname + '-' + Date.now() + path.extname(file.originalname);
+    console.log(global.filepath);
   }
 });
 
@@ -134,9 +121,9 @@ app.post('/upload', (req, res) => {
         });
       } else {
         //put ide path here
-        res.render('nodeuploads.ejs', {
-          msg: 'File Uploaded!',
-          file: `uploads/${req.file.filename}`
+        res.render('IDE.ejs', {
+          // msg: 'File Uploaded!',
+          // file: `uploads/${req.file.filename}`
         });
       }
     }
