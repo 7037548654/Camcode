@@ -6,6 +6,9 @@ const app = express()
 const path = require('path')
 const router = express.Router()
 var serveStatic = require('serve-static')
+var formidable = require('formidable')
+const multer = require('multer');
+const ejs = require('ejs');
 
 
 
@@ -23,6 +26,10 @@ router.get('/Home.html',function(req,res){
 
 router.get('/uploadfile.html',function(req,res){
   res.sendFile(path.join(__dirname+"/uploadfile.html"))
+});
+
+router.get('/uploaddemo.html',function(req,res){
+  res.sendFile(path.join(__dirname+"/uploaddemo.html"))
 });
 
 function ocr_detect(){
@@ -74,6 +81,72 @@ function ocr_detect(){
 // body.setAttribute("w3-include-html","uploadfile.html");
 // includeHTML();
 // }
+
+// getting imageFile
+
+app.get('/nodeuploads.ejs', (req, res) => res.render('nodeuploads.ejs'));
+// Set The Storage Engine
+const storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename: function(req, file, cb){
+    cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+// Init Upload
+const upload = multer({
+  storage: storage,
+  limits:{fileSize: 1000000},
+  fileFilter: function(req, file, cb){
+    checkFileType(file, cb);
+  }
+}).single('myImage');
+
+// Check File Type
+function checkFileType(file, cb){
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime
+  const mimetype = filetypes.test(file.mimetype);
+  console.log(file.mimetype);
+
+  if(mimetype && extname){
+    return cb(null,true);
+  } else {
+    cb('Error: Images Only!');
+  }
+}
+
+app.set('view engine', 'ejs');
+
+app.post('/upload', (req, res) => {
+  upload(req, res, (err) => {
+    if(err){
+      res.render('index', {
+        msg: err
+      });
+    } else {
+      if(req.file == undefined){
+        res.render('nodeuploads.ejs', {
+          msg: 'Error: No File Selected!'
+        });
+      } else {
+        res.render('nodeuploads.ejs', {
+          msg: 'File Uploaded!',
+          file: `uploads/${req.file.filename}`
+        });
+      }
+    }
+  });
+});
+
+
+
+
+
+
 
 
 
