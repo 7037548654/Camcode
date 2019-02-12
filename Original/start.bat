@@ -1,5 +1,5 @@
-It will take only few minutes
-@echo off
+ECHO OFF
+ECHO It will take only few minutes
 npm install
 npm install ejs
 npm install express
