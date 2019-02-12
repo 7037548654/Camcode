@@ -133,6 +133,7 @@ app.post('/upload', (req, res) => {
           msg: 'Error: No File Selected!'
         });
       } else {
+        //put ide path here
         res.render('nodeuploads.ejs', {
           msg: 'File Uploaded!',
           file: `uploads/${req.file.filename}`
