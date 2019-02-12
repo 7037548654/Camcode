@@ -24,39 +24,6 @@ router.get('/Home.html',function(req,res){
   res.sendFile(path.join(__dirname+'/Home.html'));
 });
 
-// function ocr_detect(){
-//   console.log("ocr definition reached")
-//   var CloudmersiveOcrApiClient = require('cloudmersive-ocr-api-client');
-//   var fs  = require('fs');
-//   var defaultClient = CloudmersiveOcrApiClient.ApiClient.instance;
-
-//   // Configure API key authorization: Apikey
-//   var Apikey = defaultClient.authentications['Apikey'];
-//   Apikey.apiKey = "5d2c7635-f38e-453c-8e25-7fe2db351609"
-
-//   var api = new CloudmersiveOcrApiClient.ImageOcrApi();
-
-//   var apiInstance = new CloudmersiveOcrApiClient.PreprocessingApi();
-//   var imageFile = fs.readFileSync(global.filepath);
-//   var opts = {
-//     'language': "ENG" // String | Optional, language of the input document, default is English (ENG). 
-//   };
-
-
-//   var callback = function(error, data, response) {
-//     if (error) {
-//       console.error(error);
-//     } else {
-//       console.log('API called succesfully');
-//       // let d =JSON.stringify(data['TextResult'])
-//       // fs.writeFile('ocr.txt', d, (err) => {
-//       // // In case of a error throw err.
-//       // if (err) throw err;
-//       // })
-//     }
-//   };
-//   api.imageOcrPost(imageFile, opts, callback);
-// };
 
 
 
@@ -128,8 +95,7 @@ app.post('/upload', (req, res) => {
 
         var api = new CloudmersiveOcrApiClient.ImageOcrApi();
 
-        // var apiInstance = new CloudmersiveOcrApiClient.PreprocessingApi();
-        // "K01_3.png"
+        
         var imageFile = Buffer.from(fs.readFileSync(global.filepath).buffer);
         // console.log(imageFile)
         var opts = {
@@ -137,11 +103,6 @@ app.post('/upload', (req, res) => {
           'preprocessing': "Auto"
         };
 
-        // var callback = function(error,  data, response) {
-        //   console.log("Hello World from callback")
-        //   console.log("data value", data)
-        //   console.log("response value:", response)
-        // };
 
         var callback = function (error, data, response) {
           console.log("inside callback")
@@ -149,13 +110,8 @@ app.post('/upload', (req, res) => {
             console.error(error);
           } else {
             console.log('API called succesfully');
-            let d =JSON.stringify(data['TextResult'])
-            fs.writeFile('ocr.txt', d, (err) => {
-            // In case of a error throw err.
-            if (err) throw err;
-            })
-
-            console.log(data['TextResult'])
+            
+            // console.log(data['TextResult'])
 
             res.render('IDE.ejs', {
               msg: JSON.stringify(data['TextResult']),
@@ -168,18 +124,13 @@ app.post('/upload', (req, res) => {
         
         console.log("Waiting for response from image ocr")
         api.imageOcrPost(imageFile, opts, callback);
+        
         // res.render('IDE.ejs', {
-        //   msg: "Hello World",
+        //   msg: 'Hello World',
+        //   // msg: JSON.stringify(data['TextResult']),
         //   // msg: 'File Uploaded!',
         //   file: `uploads/${req.file.filename}`
         // });
-        // ****************************
-
-
-
-        // var result = ocr_detect();
-        
-        
       }
     }
   });

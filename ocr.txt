@@ -1,0 +1,1 @@
+"Knapsack 0-1 Algorithm\n\nfor w = 0 to H { // Initialize 1“t row to 0’3\nB[0,w] = 0\n}\nfor i = 1 to n { // Initialize 1“ column to 0’3\nB[i,0] = 0\n}\nfor i = l to n {\nfor w = 0 to W {\nif w1 <= w { //item 1 can be in the solution\nif vx + B[i-1,w—w‘] > B[i-1,w]\nB[i,w] = v1 + B[i-1,w- W1]\nelse\nBli,w]\n\nB[i-1,w]\n\n}\n\nelse B[i,w] = Bli-l,w] // w‘ > w\n}\n\n"
