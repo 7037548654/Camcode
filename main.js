@@ -6,6 +6,13 @@ const app = express()
 const path = require('path')
 const router = express.Router()
 var serveStatic = require('serve-static')
+var formidable = require('formidable')
+const multer = require('multer');
+const ejs = require('ejs');
+
+let filepath = ''
+
+
 
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.static(path.join(__dirname,"/node_modules")));
@@ -17,59 +24,174 @@ router.get('/Home.html',function(req,res){
   res.sendFile(path.join(__dirname+'/Home.html'));
 });
 
-router.get('/uploadfile.html',function(req,res){
-  res.sendFile(path.join(__dirname+"/uploadfile.html"))
+// function ocr_detect(){
+//   console.log("ocr definition reached")
+//   var CloudmersiveOcrApiClient = require('cloudmersive-ocr-api-client');
+//   var fs  = require('fs');
+//   var defaultClient = CloudmersiveOcrApiClient.ApiClient.instance;
+
+//   // Configure API key authorization: Apikey
+//   var Apikey = defaultClient.authentications['Apikey'];
+//   Apikey.apiKey = "5d2c7635-f38e-453c-8e25-7fe2db351609"
+
+//   var api = new CloudmersiveOcrApiClient.ImageOcrApi();
+
+//   var apiInstance = new CloudmersiveOcrApiClient.PreprocessingApi();
+//   var imageFile = fs.readFileSync(global.filepath);
+//   var opts = {
+//     'language': "ENG" // String | Optional, language of the input document, default is English (ENG). 
+//   };
+
+
+//   var callback = function(error, data, response) {
+//     if (error) {
+//       console.error(error);
+//     } else {
+//       console.log('API called succesfully');
+//       // let d =JSON.stringify(data['TextResult'])
+//       // fs.writeFile('ocr.txt', d, (err) => {
+//       // // In case of a error throw err.
+//       // if (err) throw err;
+//       // })
+//     }
+//   };
+//   api.imageOcrPost(imageFile, opts, callback);
+// };
+
+
+
+// getting imageFile
+
+app.get('/nodeuploads.ejs', (req, res) => res.render('nodeuploads.ejs'));
+// Set The Storage Engine
+const storage = multer.diskStorage({
+  destination: './public/uploads/',
+  filename: function(req, file, cb){
+    cb(null,file.fieldname + path.extname(file.originalname));
+    global.filepath = './public/uploads/'+file.fieldname +  path.extname(file.originalname);
+    console.log(global.filepath);
+  }
 });
 
-function ocr_detect(){
-  var CloudmersiveOcrApiClient = require('cloudmersive-ocr-api-client');
-  var fs  = require('fs');
-  var defaultClient = CloudmersiveOcrApiClient.ApiClient.instance;
+// Init Upload
+const upload = multer({
+  storage: storage,
+  limits:{fileSize: 1000000},
+  fileFilter: function(req, file, cb){
+    checkFileType(file, cb);
+  }
+}).single('myImage');
 
-  // Configure API key authorization: Apikey
-  var Apikey = defaultClient.authentications['Apikey'];
-  Apikey.apiKey = "5d2c7635-f38e-453c-8e25-7fe2db351609"
+// Check File Type
+function checkFileType(file, cb){
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime
+  const mimetype = filetypes.test(file.mimetype);
+  console.log(file.mimetype);
 
-  var api = new CloudmersiveOcrApiClient.ImageOcrApi()
+  if(mimetype && extname){
+    return cb(null,true);
+  } else {
+    cb('Error: Images Only!');
+  }
+}
 
-  var apiInstance = new CloudmersiveOcrApiClient.PreprocessingApi();
-  var imageFile = fs.readFileSync("C:\\Users\\akash chhetri\\Documents\\GitHub\\Camcode\\img\\Test1.jpg");
-  var opts = {
-    'language': "ENG" // String | Optional, language of the input document, default is English (ENG).  Possible values are ENG (English), ARA (Arabic), ZHO (Chinese - Simplified), ZHO-HANT (Chinese - Traditional), ASM (Assamese), AFR (Afrikaans), AMH (Amharic), AZE (Azerbaijani), AZE-CYRL (Azerbaijani - Cyrillic), BEL (Belarusian), BEN (Bengali), BOD (Tibetan), BOS (Bosnian), BUL (Bulgarian), CAT (Catalan; Valencian), CEB (Cebuano), CES (Czech), CHR (Cherokee), CYM (Welsh), DAN (Danish), DEU (German), DZO (Dzongkha), ELL (Greek), ENM (Archaic/Middle English), EPO (Esperanto), EST (Estonian), EUS (Basque), FAS (Persian), FIN (Finnish), FRA (French), FRK (Frankish), FRM (Middle-French), GLE (Irish), GLG (Galician), GRC (Ancient Greek), HAT (Hatian), HEB (Hebrew), HIN (Hindi), HRV (Croatian), HUN (Hungarian), IKU (Inuktitut), IND (Indonesian), ISL (Icelandic), ITA (Italian), ITA-OLD (Old - Italian), JAV (Javanese), JPN (Japanese), KAN (Kannada), KAT (Georgian), KAT-OLD (Old-Georgian), KAZ (Kazakh), KHM (Central Khmer), KIR (Kirghiz), KOR (Korean), KUR (Kurdish), LAO (Lao), LAT (Latin), LAV (Latvian), LIT (Lithuanian), MAL (Malayalam), MAR (Marathi), MKD (Macedonian), MLT (Maltese), MSA (Malay), MYA (Burmese), NEP (Nepali), NLD (Dutch), NOR (Norwegian), ORI (Oriya), PAN (Panjabi), POL (Polish), POR (Portuguese), PUS (Pushto), RON (Romanian), RUS (Russian), SAN (Sanskrit), SIN (Sinhala), SLK (Slovak), SLV (Slovenian), SPA (Spanish), SPA-OLD (Old Spanish), SQI (Albanian), SRP (Serbian), SRP-LAT (Latin Serbian), SWA (Swahili), SWE (Swedish), SYR (Syriac), TAM (Tamil), TEL (Telugu), TGK (Tajik), TGL (Tagalog), THA (Thai), TIR (Tigrinya), TUR (Turkish), UIG (Uighur), UKR (Ukrainian), URD (Urdu), UZB (Uzbek), UZB-CYR (Cyrillic Uzbek), VIE (Vietnamese), YID (Yiddish)
-  };
+app.set('view engine', 'ejs');
 
-
-  var callback = function(error, data, response) {
-    if (error) {
-      console.error(error);
+app.post('/upload', (req, res) => {
+  upload(req, res, (err) => {
+    if(err){
+      res.render('index', {
+        msg: err
+      });
     } else {
-      let d =JSON.stringify(data['TextResult'])
-      fs.writeFile('ocr.txt', d, (err) => {
-      // In case of a error throw err.
-      if (err) throw err;
-      })
+      if(req.file == undefined){
+        res.render('nodeuploads.ejs', {
+          msg: 'Error: No File Selected!'
+        });
+      } else {
+        //put ide path here
+        console.log("calling ocr");
+
+        // ****************************
+        console.log("ocr definition reached")
+        var CloudmersiveOcrApiClient = require('cloudmersive-ocr-api-client')
+        var fs = require('fs');
+        var defaultClient = CloudmersiveOcrApiClient.ApiClient.instance;
+
+        // Configure API key authorization: Apikey
+        var Apikey = defaultClient.authentications['Apikey'];
+        Apikey.apiKey = "5d2c7635-f38e-453c-8e25-7fe2db351609" //add 9
+
+        var api = new CloudmersiveOcrApiClient.ImageOcrApi();
+
+        // var apiInstance = new CloudmersiveOcrApiClient.PreprocessingApi();
+        // "K01_3.png"
+        var imageFile = Buffer.from(fs.readFileSync(global.filepath).buffer);
+        // console.log(imageFile)
+        var opts = {
+          'language': "ENG", // String | Optional, language of the input document, default is English (ENG). 
+          'preprocessing': "Auto"
+        };
+
+        // var callback = function(error,  data, response) {
+        //   console.log("Hello World from callback")
+        //   console.log("data value", data)
+        //   console.log("response value:", response)
+        // };
+
+        var callback = function (error, data, response) {
+          console.log("inside callback")
+          if (error) {
+            console.error(error);
+          } else {
+            console.log('API called succesfully');
+            let d =JSON.stringify(data['TextResult'])
+            fs.writeFile('ocr.txt', d, (err) => {
+            // In case of a error throw err.
+            if (err) throw err;
+            })
+
+            console.log(data['TextResult'])
+
+            res.render('IDE.ejs', {
+              msg: JSON.stringify(data['TextResult']),
+              // msg: 'File Uploaded!',
+              file: `uploads/${req.file.filename}`
+            });
+
+          }
+        };
+        
+        console.log("Waiting for response from image ocr")
+        api.imageOcrPost(imageFile, opts, callback);
+        // res.render('IDE.ejs', {
+        //   msg: "Hello World",
+        //   // msg: 'File Uploaded!',
+        //   file: `uploads/${req.file.filename}`
+        // });
+        // ****************************
+
+
+
+        // var result = ocr_detect();
+        
+        
+      }
     }
-  };
-  api.imageOcrPost(imageFile, opts, callback);
-};
-
-app.post('/submitfile', function(req, res) {
-  console.log(req.body.file6);
-  res.send(200);
-
-  // sending a response does not pause the function
-  // ocr_detect();
+  });
 });
-// router.get('/sitemap',function(req,res){
-//   res.sendFile(path.join(__dirname+'/sitemap.html'));
-// })
-// function UploadPhoto()
-// {
-// var attr = document.createAttribute("w3-include-html");
-// var body = document.getElementById("MainBody");
-// body.setAttribute("w3-include-html","uploadfile.html");
-// includeHTML();
-// }
+
+
+
+
+
+
+
+
 
 //add the router
 app.use('/', router);

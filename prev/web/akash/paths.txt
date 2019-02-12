@@ -1,1 +1,0 @@
-"public class Welcome\n\n{\n\npublic static void main(String[] args)\n\n{\nString[] greeting = new String[3];\n\ngreeting[0] = “Welcome to Core Java\";\ngreeting[l] : \"by Cay Horstmann\";\ngreeting[2] = \"and Gary Cornell\";\n\nfor (int i : O; i < greeting.length; i++)\n\nSystem.0ut.println(greeting[i]);\n\n"

@@ -16,11 +16,15 @@
   },
   "homepage": "https://github.com/7037548654/Camcode#readme",
   "dependencies": {
+    "base64-to-image": "^1.0.2",
     "bootstrap": "^4.2.1",
+    "cloudmersive-ocr-api-client": "^1.1.4",
     "css": "^2.2.4",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "formidable": "^1.2.1",
     "jquery": "^3.3.1",
+    "multer": "^1.4.1",
     "serve-static": "^1.13.2"
   },
   "devDependencies": {},
