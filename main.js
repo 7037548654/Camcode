@@ -95,11 +95,11 @@ app.post('/upload', (req, res) => {
 
         var api = new CloudmersiveOcrApiClient.ImageOcrApi();
 
-        
+
         var imageFile = Buffer.from(fs.readFileSync(global.filepath).buffer);
         // console.log(imageFile)
         var opts = {
-          'language': "ENG", // String | Optional, language of the input document, default is English (ENG). 
+          'language': "ENG", // String | Optional, language of the input document, default is English (ENG).
           'preprocessing': "Auto"
         };
 
@@ -110,7 +110,7 @@ app.post('/upload', (req, res) => {
             console.error(error);
           } else {
             console.log('API called succesfully');
-            
+
             // console.log(data['TextResult'])
 
             res.render('IDE.ejs', {
@@ -121,10 +121,10 @@ app.post('/upload', (req, res) => {
 
           }
         };
-        
+
         console.log("Waiting for response from image ocr")
         api.imageOcrPost(imageFile, opts, callback);
-        
+
         // res.render('IDE.ejs', {
         //   msg: 'Hello World',
         //   // msg: JSON.stringify(data['TextResult']),
