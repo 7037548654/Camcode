@@ -8,14 +8,15 @@
 ### Setup and execution
 * Install [Node.js](https://nodejs.org/en/)
 * Set environment path on node.js
-* run init.bat file (Donot close the terminal)
-* 
+* run init.bat file (Donot close the terminal) only first time
+* run start.bat file to start the node js server, keep it running in the back ground
+* open this link in web browser [site](http://localhost:8080/)
 
 ### Dependencies
 
-* Node.js
-* Cloudmersive OCR API 
-* Express.js
-* Bootstrap
-* JQuery
+* [Node.js](https://nodejs.org/en/)
+* [Cloudmersive OCR API](https://cloudmersive.com/)
+* [Express.js](https://expressjs.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [jQuery](https://jquery.com/)
 
