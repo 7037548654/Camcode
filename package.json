@@ -19,7 +19,6 @@
     "base64-to-image": "^1.0.2",
     "bootstrap": "^4.2.1",
     "cloudmersive-ocr-api-client": "^1.1.4",
-    "common": "^0.2.5",
     "css": "^2.2.4",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
