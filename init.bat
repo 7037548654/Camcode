@@ -7,3 +7,6 @@ npm install cloudmersive-ocr-api-client
 npm install express
 npm install multer
 npm install formidable
+npm install debug
+npm install common
+npm install popper
