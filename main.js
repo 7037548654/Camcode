@@ -24,8 +24,17 @@ router.get('/Home.html',function(req,res){
   res.sendFile(path.join(__dirname+'/Home.html'));
 });
 
+router.get('/GettingStarted.html',function(req,res){
+  res.sendFile(path.join(__dirname+'/GettingStarted.html'));
+});
 
+router.get('/EnterKey.html',function(req,res){
+  res.sendFile(path.join(__dirname+'/EnterKey.html'));
+});
 
+router.get('/Capture.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/Capture.png'));
+});
 
 // getting imageFile
 
@@ -83,7 +92,7 @@ app.post('/upload', (req, res) => {
         //put ide path here
         console.log("calling ocr");
 
-        // ****************************
+        // ********************************************************************************
         console.log("ocr definition reached")
         var CloudmersiveOcrApiClient = require('cloudmersive-ocr-api-client')
         var fs = require('fs');
@@ -91,15 +100,15 @@ app.post('/upload', (req, res) => {
 
         // Configure API key authorization: Apikey
         var Apikey = defaultClient.authentications['Apikey'];
-        Apikey.apiKey = "5d2c7635-f38e-453c-8e25-7fe2db351609" //add 9
+        Apikey.apiKey = "c6271a10-de1f-4d71-a725-2f76f042eb24" //add 9
 
         var api = new CloudmersiveOcrApiClient.ImageOcrApi();
 
-        
+
         var imageFile = Buffer.from(fs.readFileSync(global.filepath).buffer);
         // console.log(imageFile)
         var opts = {
-          'language': "ENG", // String | Optional, language of the input document, default is English (ENG). 
+          'language': "ENG", // String | Optional, language of the input document, default is English (ENG).
           'preprocessing': "Auto"
         };
 
@@ -110,7 +119,7 @@ app.post('/upload', (req, res) => {
             console.error(error);
           } else {
             console.log('API called succesfully');
-            
+
             // console.log(data['TextResult'])
 
             res.render('IDE.ejs', {
@@ -121,10 +130,10 @@ app.post('/upload', (req, res) => {
 
           }
         };
-        
+
         console.log("Waiting for response from image ocr")
         api.imageOcrPost(imageFile, opts, callback);
-        
+
         // res.render('IDE.ejs', {
         //   msg: 'Hello World',
         //   // msg: JSON.stringify(data['TextResult']),

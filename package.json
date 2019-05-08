@@ -19,14 +19,16 @@
     "base64-to-image": "^1.0.2",
     "bootstrap": "^4.2.1",
     "cloudmersive-ocr-api-client": "^1.1.4",
+    "common": "^0.2.5",
     "css": "^2.2.4",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "formidable": "^1.2.1",
+    "http": "0.0.0",
     "jquery": "^3.3.1",
     "multer": "^1.4.1",
     "serve-static": "^1.13.2"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "* Camcode is a project based on ocr(optical character recognition).It is platform in which user can simply upload an image and OCR will give you code out of it.\r * You can then run this code in IDE provided.\r * This project is runs in localhost so you have to read documentation and guideline written in wiki.\r * We embedded cloudmersive website in our projecct because it is the API which we are using so you can generate your own API key and run this prject by replacing API key in main.js"
 }

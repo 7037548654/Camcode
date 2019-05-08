@@ -1,0 +1,121 @@
+<html>
+    <head></head>
+    <body>
+<div>
+
+    <form class = 'box'>
+        <h1>Enter Key</h1>
+        <input type="text" name="CloudmersiveKey" placeholder="Key" required/>
+        <input type="submit" name="Submit" class="btn" value="Login"/>        
+    </form>
+
+</div>
+<style>
+
+    body{
+
+        margin : 0 ;
+        padding : 0;
+        font-family : sans-serif;
+        background-image: url("Capture.png");
+        background-color: #cccccc;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+    .box{
+        width : 300px;
+        padding : 40px;
+        position: absolute;
+        top : 50%;
+        left : 50%;
+        transform: translate(-50% , -50%);
+        background: #000000;
+        background-color: rgba(66, 5, 116, 0.1);
+        border-radius : 40px; 
+        text-align : center;
+
+    }
+    .box h1{
+        color: rgb(9, 1, 37);
+        text-transform : uppercase;
+        font-weight : 500;
+    }
+    .box input[type = "text"]{
+
+        border : 0;
+        background : none;
+        display : block;
+        margin : 20px auto ;
+        text-align: center;
+        border : 2px solid #3498db;
+        background-color: rgba(66, 5, 116, 0.2);
+        padding : 14px 10px;
+        width : 200px;
+        outline : none;
+        color : white;
+        border-radius: 28px;
+        
+        transition : 0.30s;
+
+    }
+    .box input[type = "text"]::placeholder{
+    
+    color : #ffffff;
+    
+    }
+
+    .box input[type = "text"]:hover{
+    
+    width : 280px;
+    background-color: rgba(66, 5, 116, 0.4);
+    border-color : #160369;
+
+    }
+    .box input[type = "text"]:focus{
+    
+    width : 280px;
+    background-color: rgba(23, 1, 41, 0.4);
+    border-color : #0a0131;
+
+    }
+
+.btn{
+
+        border : 0;
+        background : none;
+        display : block;
+        margin : 20px auto ;
+        text-align: center;
+        border : 2px solid #3498db;
+        padding : 14px 40px;
+        background-color: rgba(66, 5, 116, 0.2);
+        width : 200px;
+        outline : none;
+        color : white;
+        border-radius: 28px;
+        transition : 0.30s;
+        cursor : pointer;
+
+}
+
+.btn:hover{
+    
+    width : 280px;
+    background-color: rgba(66, 5, 116, 0.4);
+    border-color : #160369;
+
+    }
+
+.btn:focus{
+    
+    width : 150px;
+    background-color: rgba(23, 1, 41, 0.4);
+    border-color : #0a0131;
+    transition: 100ms;
+    }
+
+</style>
+</body>
+</html>
