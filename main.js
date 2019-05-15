@@ -33,9 +33,32 @@ router.get('/EnterKey.html',function(req,res){
 });
 
 router.get('/Capture.png',function(req,res){
-  res.sendFile(path.join(__dirname+'/Capture.png'));
+  res.sendFile(path.join(__dirname+'/img/Capture.png'));
+});
+router.get('/1.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/1.png'));
+});
+router.get('/2.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/2.png'));
+});
+router.get('/3.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/3.png'));
+});
+router.get('/4.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/4.png'));
+});
+router.get('/5.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/5.png'));
+});
+router.get('/6.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/6.png'));
+});
+router.get('/7.png',function(req,res){
+  res.sendFile(path.join(__dirname+'/img/7.png'));
 });
 
+app.get('/Carousel', (req, res) => res.render('Carousel.ejs'));
+app.get('/EnterKey', (req, res) => res.render('EnterKey.ejs'));
 // getting imageFile
 
 app.get('/nodeuploads.ejs', (req, res) => res.render('nodeuploads.ejs'));
